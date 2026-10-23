@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-task-tracker
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-task-tracker
+  template:
+    metadata:
+      labels:
+        app: k8s-task-tracker
+    spec:
+      containers:
+        - name: k8s-task-tracker
+          image: k8s-task-tracker:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
